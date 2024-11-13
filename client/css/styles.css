@@ -1,0 +1,322 @@
+body { 
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0; 
+    padding: 20px;
+    background-color:lightgrey;
+} 
+
+header{ 
+    text-align: center;
+    padding: 10px 0;
+}
+
+.home-page-image{ 
+  text-align: center;
+  padding: 20px 0;
+  max-width: 70px;
+}
+
+nav{ 
+    margin: 20px 0;
+}
+
+nav a{ 
+    margin: 30px;
+    text-decoration: none;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border-collapse: separate;
+    border-spacing: 20px;
+    border-color: rgb(4, 218, 4);
+ }
+
+ .container{ 
+    padding: 20px;
+    border-radius: 8px;
+    position:absolute;
+    left: 100px;
+    height: 200px;
+ }
+
+ .due-container{ 
+    margin-top: 5px; 
+    position:absolute;
+    bottom: 110px;; 
+    right: 250px;
+ }
+
+ .edit-page{ 
+    position:absolute; 
+    bottom: 20px;
+    left: 20px;
+ }
+
+ .active{ 
+    border: 3px green;
+    padding: 5px;
+ }
+
+ .center-right-image{ 
+    position:absolute;
+    top: 30%;
+    right: 150px;
+    /*transform: translateY(-50%);*/
+    max-width: 250px;
+ }
+
+ menu.container{ 
+    margin: 30px;
+    text-decoration: none;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border-collapse: separate;
+    border-spacing: 20px;
+    border-color: rgb(4, 218, 4);
+ }
+
+ .login-container, .logout-container {
+   margin-top: 20px;
+   padding: 20px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   width: 300px;
+   text-align: center;
+}
+
+input[type="text"], input[type="password"] {
+   padding: 8px;
+   margin: 5px;
+   width: 80%;
+   border-radius: 5px;
+   border: 1px solid #ccc;
+}
+
+button {
+   padding: 10px 20px;
+   background-color: blue;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+button:hover {
+   background-color: darkblue;
+}
+
+.Assignments-container {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+.navbar {
+   display: flex;
+   justify-content: space-between;
+   gap: 20px;
+}
+
+.assignments {
+   background-color: blue;
+   color: white;
+   padding: 20px;
+   border-radius: 8px;
+   width: 300px;
+}
+
+.assignment-box {
+   background-color: red;
+   color: white;
+   padding: 10px;
+   margin: 10px 0;
+   text-align: center;
+   border-radius: 5px;
+}
+
+.file-types {
+   background-color: blue;
+   color: white;
+   padding: 20px;
+   border-radius: 8px;
+   width: 300px;
+}
+
+.file-type-box {
+   background-color: red;
+   color: white;
+   padding: 10px;
+   margin: 10px 0;
+   text-align: center;
+   border-radius: 5px;
+}
+
+.uploads {
+   display: flex;
+   justify-content: flex-start;
+   gap: 20px;
+}
+
+.file-upload, .submit {
+   background-color: lightblue;
+   color: black;
+   padding: 15px;
+   border-radius: 8px;
+   width: 200px;
+}
+
+.modify-due-date {
+   margin-top: 20px;
+   background-color: lightgreen;
+   padding: 15px;
+   border-radius: 8px;
+   width: 200px;
+}
+
+input[type="text"]{ 
+   padding:8px;
+   width: 75px;
+}
+
+.change{ 
+   background-color: black;
+   padding: 10px;
+   position: relative;
+   left: 50px;
+}
+
+.grades{ 
+   background-color: blue;
+   color: white;
+   padding: 20px;
+   border-radius: 8px;
+   width: 300px;
+}
+
+.assignment-box2{ 
+   background-color: red;
+   color: white;
+   padding: 10px;
+   margin: 10px 0;
+   text-align: center;
+   border-radius: 5px;
+}
+
+.student-name{ 
+   background-color: blue;
+   color: white;
+   padding: 20px;
+   border-radius: 8px;
+   width: 300px;
+}
+
+.score-grade{ 
+   background-color: white;
+   color: black;
+   padding: 10px;
+   margin: 10px 0;
+   text-align: center;
+   border-radius: 5px;
+}
+
+.status{ 
+   background-color: black;
+   color: white;
+   padding: 20px;
+   border-radius: 8px;
+   width: 300px; 
+}
+
+.grade-status{ 
+   background-color: black;
+   color: white;
+   padding: 20px;
+   border-radius: 8px;
+   width: 300px; 
+}
+
+ .mail { 
+   background-color: blue;
+   color: white;
+   padding: 20px;
+   border-radius: 8px;
+   width: 300px;
+ }
+ .mail-options{ 
+   background-color: orange;
+   color: black;
+   padding: 10px;
+   margin: 10px 0;
+   text-align: center;
+   border-radius: 5px;
+ }
+
+ .top-right-image{ 
+   margin: 20px;
+   position: absolute;
+   top: 20%;
+   right: 40px;
+   max-width: 250px;
+ }
+
+ .calculate{ 
+   background-color: blue;
+   color: white;
+   padding: 20px;
+   border-radius: 8px;
+   width: 100px;
+   cursor: pointer;
+ }
+
+ .calculator-container{ 
+   background-color: grey;
+   color: black;
+   padding: 10px;
+   margin: 10px 0;
+   text-align: center;
+   border-radius: 5px;
+   max-width: 200%;
+ }
+
+ /*.empty{ 
+   background-color: white;
+   position: absolute;
+   top: 170px;
+   right: 180px;
+   padding: 20px;
+   border-radius: 8px;
+   width: 350px;
+ }*/
+
+ .clear{ 
+   background-color: grey;
+   color: black;
+   padding: 20px;
+   border-radius: 8px;
+   width: 30px;
+   cursor: pointer;
+ }
+
+ /*.calculate-grade{ 
+   background-color: green;
+   color: black;
+   padding: 20px;
+   border-radius: 8px;
+   width: 30px;
+ }*/
+
+ h3 {
+   margin-bottom: 15px;
+}
+
+input[type="number"] {
+   padding: 8px;
+   width: 200px;
+   margin-top: 5px;
+   margin-bottom: 10px;
+}
+
+label {
+   font-weight: bold;
+}

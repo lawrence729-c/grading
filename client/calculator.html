@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang = 'en' class= ''>
+<head>  
+    <meta charset="UTF-8">
+    <title>Grading calculator</title>  
+    <link rel = 'stylesheet' href = "/client/css/styles.css" />
+    </head>
+<body>
+    <header class="header">
+        <h1>Grading</h1>
+      </header>
+    <div class = "target-container" >
+        <div class="navbar"> 
+            <div class= "calculate">Calculate your target Grade!</div>
+    </div>
+    <body>
+    
+    <div class= "calculator-container" >
+        <label for="current-grade">Current Grade: </label>
+        <input type="number" id="current-grade" placeholder="Enter current grade (%)">
+        <br><br>
+        <label for="target-grade">Target Grade: </label>
+        <input type="number" id="target-grade" placeholder="Enter target grade (%)">
+        <br><br>
+        <label for="weight">Final Assignment Weight (%): </label>
+        <input type="number" id="weight" placeholder="Enter final assignment weight (%)">
+        <br><br>
+        <button class="calculate" onclick="calculateTargetGrade()">Calculate</button>
+        <button class="clear" onclick="clearFields()">Clear</button>
+        <div id="result" class="empty"></div>
+    </div>
+    </div>
+    <script src="/client/js/runCalculator.js"></script>
+    </body>
