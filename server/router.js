@@ -15,20 +15,30 @@ var router = function(app) {
 		res.status(200).sendFile(path.join(__dirname + "/../client/menu.html"));
 	});
 
+	app.get("/login", function(req, res) { 
+		res.status(200).sendFile(path.join(__dirname + "/../client/login.html"));
+	});
+
+	app.get("/logout", function(req, res) { 
+		res.status(200).sendFile(path.join(__dirname + "/../client/logout.html"));
+	});
+
+	app.get("/modules", function(req, res) { 
+		res.status(200).sendFile(path.join(__dirname + "/../client/modules.html"));
+	});
+	 
+	app.get("/mail", function(req, res) { 
+		res.status(200).sendFile(path.join(__dirname + "/../client/mail.html"));
+	}); 
+
+	app.get("/grades", function(req, res) { 
+		res.status(200).sendFile(path.join(__dirname + "/../client/grades.html"));
+	});
+
 	app.get("/calculator", function(req, res) { 
 		res.status(200).sendFile(path.join(__dirname + "/../client/calculator.html"));
 	});
 
-		
-
-	
-/*	app.get("/", function(req, res) { 
-		res.status(200).sendFile(path.join(__dirname + "/../client/ .html"));
-	});
-
-	app.get("/ ", function(req, res) { 
-		res.status(200).sendFile(path.join(__dirname + "/../client/ .html")); 
-	}); */
 }; 
 
  module.exports =  router;
