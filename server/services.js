@@ -31,12 +31,6 @@ var services = function(app) {
                 return res.status(400).json({ msg: "Username already taken" });
             }
 
-			/*bcrypt.hash(password, 10, function(err, hashedPassword) {
-                if (err) {
-                    console.error(err);
-                    return res.status(500).json({ msg: "Error hashing password" });
-                }*/
-
 			const insertUserQuery = 'INSERT INTO students (student_username, student_password, student_first_name, student_last_name, student_emailaddress) VALUES (?, ?, ?, ?, ?)';
 			const userData = [username, hashedPassword, firstName, lastName, email];
 	
@@ -69,6 +63,7 @@ var services = function(app) {
                 return res.status(401).json({ msg: "Invalid username or password" });
             }
 
+			const user = results[0];
 			if (user.student_password !== password) {
                 return res.status(401).json({ msg: "Invalid username or password" });
             }

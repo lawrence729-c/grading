@@ -1,3 +1,5 @@
+/*--experimental-webstorage*/
+
 const loginForm = document.getElementById('loginForm');
 const loginContainer = document.getElementById('loginContainer');
 const logoutContainer = document.getElementById('logoutContainer');
@@ -10,27 +12,16 @@ const registrationContainer = document.getElementById('registrationContainer');
 const exactUsername = 'lawrenceM'
 const exactPassword = 'fred123'
 
-document.addEventListener('DOMContentLoaded', () => {
-const admin = document.getElementById('admin').value;
-admin = localStorage.getItem('admin');  
-
-const student = document.getElementById('student').value;
-student = localStorage.getItem('student');
-});
-
-const student = document.getElementById('student').value;
-student = localStorage.getItem('student');
-
 registrationForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const username = document.getElementById('registerUsername').value;
-    const password = document.getElementById('registerPassword').value;
+    const registerUsername = document.getElementById('registerUsername').value;
+    const registerPassword = document.getElementById('registerPassword').value;
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
     const email = document.getElementById('email').value;
 
-    fetch('http://localhost:3306/register', { 
+    fetch('http://localhost:5000/register', { 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -63,9 +54,11 @@ registrationForm.addEventListener('submit', (event) => {
 
 document.addEventListener('DOMContentLoaded', () => { 
 const loggedInUser = localStorage.getItem('loggedInUser')
+const userRole = localStorage.getItem(userRole);
 
 if(loggedInUser){ 
     displayLogOutView(loggedInUser);
+    switchViewBasedOnRole(userRole);
 } else{ 
 
     displayLogInView();
@@ -83,6 +76,16 @@ function displayLogOutView(username){
     loginContainer.style.display = 'none'
     logoutContainer.style.display = 'block'
     loggedInUserElement.textContent = username;
+}
+
+function switchViewBasedOnRole(role) {
+    if (role === 'admin') {
+        /*document.querySelector('.admin-side').style.display = 'block';
+        document.querySelector('.student-side').style.display = 'none';*/
+    } else if (role === 'student') {
+        /*document.querySelector('.admin-side').style.display = 'none';
+        document.querySelector('.student-side').style.display = 'block';*/
+    }
 }
 
 function restrictAccessIfNotLoggedIn() {
@@ -104,7 +107,7 @@ loginForm.addEventListener('submit', (event)=>{
     const username = document.getElementById('usernme').value;
     const password = document.getElementById('password').value;
     
-    fetch('http://localhost:3306/login', { 
+    fetch('http://localhost:5000/login', { 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -115,8 +118,10 @@ loginForm.addEventListener('submit', (event)=>{
     .then(data => {
         if (data.msg === 'Login successful') {
             localStorage.setItem('loggedInUser', JSON.stringify(data.user));
+            localStorage.setItem('userRole', data.user.role);
 
             showLogoutView(data.user.student_first_name);
+            switchViewBasedOnRole(data.user.role);
             loginForm.reset();
         } else {
             alert(data.msg);
@@ -129,24 +134,19 @@ loginForm.addEventListener('submit', (event)=>{
 
     if(username == exactUsername && password == exactPassword) { 
         localStorage.setItem('loggedInUser',  username);
+        localStorage.setItem('userRole', 'admin');
 
         displayLogOutView(username);
-
+        switchViewBasedOnRole('admin');
         loginForm.reset(); 
     } else{ 
         alert('Invalid login, Re-enter login info');
     }
 });
 
-loginForm.addEventListener('click', (event)=>{  
-    const otherOptions = ["/modules", "mail", "grades", "calculator" ];
-    if(!loggedInUser.click(otherOptions)) { 
-        alert('You must login first');
-    }
-});
-
 logoutButton.addEventListener('click', () => { 
     localStorage.removeItem(loggedInUser);
+    localStorage.removeItem('userRole');
 
     displayLogInView();
 });
@@ -166,3 +166,19 @@ document.querySelectorAll('a').forEach(link => {
         } 
     }); 
 });
+
+document.getElementById('DOMContentLoaded', () => {
+const assignments = ondragstart(dragAsssignments(ev));
+assignments = ondragover(drop(ev));
+});
+
+function dragAsssignments(ev) { 
+    ev.dataTransfer.setData("text", ev.target.assignments);
+    event.preventDefault
+}
+
+function drop(ev){ 
+    ev.preventDefault();
+    assignments = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(assignments))
+}

@@ -10,6 +10,18 @@ const registrationContainer = document.getElementById('registrationContainer');
 const exactUsername = 'lawrenceM'
 const exactPassword = 'fred123'
 
+document.addEventListener('DOMContentLoaded', () => {
+    /*const admin = document.getElementById('admin').value;*/
+    const admin = {firstName: "Lawrence", lastName: "Maina"};
+    const myAdmin = JSON.stringify(admin);
+    localStorage.setItem("adminName",myAdmin);
+    localStorage.getItem("adminName");  
+    /*Students use database*/
+    
+    const student = document.getElementById('student').value;
+    student = localStorage.getItem('student');
+    });
+
 registrationForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
