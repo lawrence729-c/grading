@@ -86,16 +86,16 @@ function displayLogOutView(username){
 
 function switchViewBasedOnRole(role) {
     if (role === 'admin') {
-        /*document.querySelector('.admin-side').style.display = 'block';
-        document.querySelector('.student-side').style.display = 'none';*/
+        document.querySelector('.admin-side').style.display = 'block';
+        document.querySelector('.student-side').style.display = 'none';
     } else if (role === 'student') {
-        /*document.querySelector('.admin-side').style.display = 'none';
-        document.querySelector('.student-side').style.display = 'block';*/
+        document.querySelector('.admin-side').style.display = 'none';
+        document.querySelector('.student-side').style.display = 'block';
     }
 }
 
-function restrictAccessIfNotLoggedIn() {
-    const restrictedPages = ['/modules', '/mail', '/grades', '/calculator'];
+/*function restrictAccessIfNotLoggedIn() {
+    const restrictedPages = ['/modules', '/mail', '/grades'];
     const currentPage = window.location.pathname;
 
     if (restrictedPages.includes(currentPage)) {
@@ -105,7 +105,7 @@ function restrictAccessIfNotLoggedIn() {
             window.location.href = '/login';
         }
     }
-}
+}*/
 
 loginForm.addEventListener('submit', (event)=>{ 
     event.preventDefault(); 

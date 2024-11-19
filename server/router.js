@@ -57,11 +57,11 @@ var router = function(app) {
 	});
 
 	app.get("/calculator", function(req, res) { 
-		const loggedInUser = req.cookies.loggedInUser;
+		/*const loggedInUser = req.cookies.loggedInUser;
 		if(!loggedInUser){ 
 			return res.status(402).json({msg: 'Access Denied'});
 		}
-		/*if(!loggedInUser || loggedInUser !== 'admin'){ 
+		if(!loggedInUser || loggedInUser !== 'admin'){ 
 			return res.status(402).json({msg: 'Access Denied'});
 		}*/
 		res.status(200).sendFile(path.join(__dirname + "/../client/calculator.html"));
