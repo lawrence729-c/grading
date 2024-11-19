@@ -93,6 +93,40 @@ input[type="text"], input[type="password"] {
    border: 1px solid #ccc;
 }
 
+.student-list {
+   position: relative;
+   display: inline-block;
+ }
+
+ #student-dropdown {
+   position: absolute;
+   top: 100%;
+   left: 0;
+   width: 100%;
+   background-color: white;
+   border: 1px solid #ccc;
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: none; /* Hide the dropdown by default */
+   max-height: 200px;
+   overflow-y: auto;
+   z-index: 100;
+ }
+ 
+ #student-dropdown li {
+   padding: 8px;
+   cursor: pointer;
+ }
+ 
+ #student-dropdown li:hover {
+   background-color: #f1f1f1;
+ }
+ 
+ #student-dropdown + #dropdown-arrow:hover {
+   display: block;
+ }
+
 button {
    padding: 10px 20px;
    background-color: blue;

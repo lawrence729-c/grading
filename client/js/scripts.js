@@ -9,8 +9,8 @@ const loggedInUserElement = document.getElementById('loggedInUser');
 const registrationForm = document.getElementById('registrationForm');
 const registrationContainer = document.getElementById('registrationContainer');
 
-const exactUsername = 'lawrenceM'
-const exactPassword = 'fred123'
+const exactUsername = 'fred123';
+const exactPassword = 'toolbar56';
 
 registrationForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -27,8 +27,8 @@ registrationForm.addEventListener('submit', (event) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            username,
-            password,
+            username: registerUsername,
+            password: registerPassword,
             firstName,
             lastName,
             email
@@ -53,18 +53,24 @@ registrationForm.addEventListener('submit', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => { 
-const loggedInUser = localStorage.getItem('loggedInUser')
-const userRole = localStorage.getItem(userRole);
+const loggedInUser = window.localStorage.getItem('loggedInUser')
+const userRole = window.localStorage.getItem('userRole');
+const redirectPage = window.localStorage.getItem('redirectPage');
 
 if(loggedInUser){ 
     displayLogOutView(loggedInUser);
     switchViewBasedOnRole(userRole);
 } else{ 
-
     displayLogInView();
 }
 
 restrictAccessIfNotLoggedIn();
+
+if (redirectPage) {
+    window.location.href = redirectPage;
+    window.localStorage.removeItem('redirectPage');
+}
+
 });
 
 function displayLogInView(){ 
@@ -93,7 +99,7 @@ function restrictAccessIfNotLoggedIn() {
     const currentPage = window.location.pathname;
 
     if (restrictedPages.includes(currentPage)) {
-        const loggedInUser = localStorage.getItem('loggedInUser');
+        const loggedInUser = window.localStorage.getItem('loggedInUser');
         if (!loggedInUser) {
             alert('You must log in first');
             window.location.href = '/login';
@@ -117,57 +123,111 @@ loginForm.addEventListener('submit', (event)=>{
     .then(response => response.json())
     .then(data => {
         if (data.msg === 'Login successful') {
-            localStorage.setItem('loggedInUser', JSON.stringify(data.user));
-            localStorage.setItem('userRole', data.user.role);
+            window.localStorage.setItem('loggedInUser', JSON.stringify(data.user));
+            window.localStorage.setItem('userRole', data.user.role);
+            
+            alert('You are now logged in');
 
-            showLogoutView(data.user.student_first_name);
+            displayLogOutView(data.user.student_first_name);
             switchViewBasedOnRole(data.user.role);
+            
+            const redirectPage = window.localStorage.getItem('redirectPage');
+            if (redirectPage) {
+                window.location.href = redirectPage;
+                window.localStorage.removeItem('redirectPage');
+            } else {
+                // If they clicked login from the main menu, show a small confirmation message
+                alert('You are now logged in');
+            }
+
+            loginForm.reset(); 
+        } else { 
+            alert('Invalid login, please try again');
+        }
+    })
+            /*if(username == exactUsername && password == exactPassword) { 
+                window.localStorage.setItem('loggedInUser', username);
+                window.localStorage.setItem('userRole', 'admin');
+
+                displayLogOutView(username);
+                switchViewBasedOnRole('admin');
+                loginForm.reset(); 
+            } else{ 
+                alert('Invalid login, Re-enter login info');
+            }
+            displayLogoutView(data.user.student_first_name);
+            switchViewBasedOnRole('student');
             loginForm.reset();
         } else {
             alert(data.msg);
-        }
-    })
+        }*/
     .catch(error => {
         console.error('Error during login:', error);
         alert('An error occurred during login.');
     });
-
-    if(username == exactUsername && password == exactPassword) { 
-        localStorage.setItem('loggedInUser',  username);
-        localStorage.setItem('userRole', 'admin');
-
-        displayLogOutView(username);
-        switchViewBasedOnRole('admin');
-        loginForm.reset(); 
-    } else{ 
-        alert('Invalid login, Re-enter login info');
-    }
 });
 
 logoutButton.addEventListener('click', () => { 
-    localStorage.removeItem(loggedInUser);
-    localStorage.removeItem('userRole');
+    window.localStorage.removeItem(loggedInUser);
+    window.localStorage.removeItem('userRole');
 
     displayLogInView();
 });
 
 document.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', (event) => {
-        const restrictedPages = ['/modules', '/mail', '/grades', '/calculator'];
+        const restrictedPages = ['/modules', '/mail', '/grades'];
         const currentPage = link.getAttribute('href');
         
         if (restrictedPages.includes(currentPage)) {
-            const loggedInUser = localStorage.getItem('loggedInUser');
+            const loggedInUser = window.localStorage.getItem('loggedInUser');
             if (!loggedInUser) {
                 event.preventDefault();  
                 alert('You must log in first to access this page.');
                 window.location.href = '/login';
             } 
         } 
-    }); 
+    });  
 });
 
-document.getElementById('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
+    const studentIdList = document.getElementById('student-dropdown');
+    const enterIdInput = document.getElementById('enter-id');
+
+    function fetchStudentIDs(){
+        fetch('http://localhost:5000/fetchStudentIDs') 
+        .then(response => response.json())
+        .then(data => {
+            studentIdList.innerHTML = ''; 
+        data.forEach(studentId => {
+          const li = document.createElement('li');
+          li.textContent = studentId;
+          li.addEventListener('click', () => {
+            enterIdInput.value = studentId; 
+            studentIdList.style.display = 'none'; 
+          });
+          studentIdList.appendChild(li);
+        });
+      })
+      .catch(error => console.error('Error fetching student IDs:', error));
+  }
+
+    document.getElementById('dropdown-arrow').addEventListener('mouseover', () => {
+    fetchStudentIDs(); 
+    studentIdList.style.display = 'block';
+     });
+
+    document.querySelector('.student-list').addEventListener('mouseleave', () => {
+    studentIdList.style.display = 'none';
+    //fetchStudentIDs();
+    });
+});
+
+document.getElementById('home-button').addEventListener('click', () => { 
+    window.location.href = '/home';
+    });
+    
+/*document.getElementById('DOMContentLoaded', () => {
 const assignments = ondragstart(dragAsssignments(ev));
 assignments = ondragover(drop(ev));
 });
@@ -182,3 +242,4 @@ function drop(ev){
     assignments = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(assignments))
 }
+*/

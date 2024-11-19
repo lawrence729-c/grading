@@ -13,16 +13,13 @@
             <br><br>
             <a href= "#menu">Main Menu<span class="arrow">&#9662;</span></a>
             <br><br>
-            <table>
-            <tr>
-            <td> <a href= "#classes">Your classes<span class="arrow">&#9656;</span></a><label for="course">Enter course number</label> <input type = "text" id="enter-course" placeholder= " "><span class="arrow">&#9662;<!--Hover dropdown for course list--></span>
-            </tr>
-            </td>
-            <tr>
-            <td><a href= "#students">Your students<span class="arrow">&#9656;</span></a><label for="sID">Enter student ID</label> <input type = "text" id="enter-id" placeholder= " " ><span class="arrow">&#9662;<!--Hover dropdown for student list--></span>
-            </tr>
-            </td>
-            </table> 
+            <a href= "#students">Your students<span class="arrow">&#9656;</span></a>
+            <label for="sID">Enter student ID</label> 
+            <div class = "student-list">
+            <input type = "text" id="enter-id" placeholder= " " >
+            <span class="arrow"id="dropdown-arrow">&#9662;</span>
+            <ul id="student-dropdown" class="dropdown-menu"></ul>
+            </div>
             <br>
             <a href= "/login">Log In</a>
             <br><br>
@@ -49,8 +46,10 @@
       </div>
 
       <img src = "https://as1.ftcdn.net/jpg/01/30/82/92/1000_F_130829283_kDFS1fSIH4qXm5cPsB6WEagrdB0BD1oo.jpg" alt = "grading-image" class= "center-right-image" >
-      
-      <img src = "https://www.fg-a.com/homes/2021-home-button-blue.jpg" alt = "home" class="home-page-image">
-      <script src="/client/js/scripts.js"></script>
+        </div>
+
+     <div class = "redirect"> <button id="home-button" class= "direct-home"> <img src = "https://www.fg-a.com/homes/2021-home-button-blue.jpg" alt = "home" class="home-page-image"></button>
+     </div>
+    <script src="/client/js/scripts.js"></script>
   </body>
   </html>

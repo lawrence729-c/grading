@@ -14,37 +14,43 @@ connection.connect(function(err){
 
 var services = function(app) { 
 	app.post('/register', function(req, res) {
-        const { username, password, firstName, lastName, email } = req.body;
+        //const { username, password, firstName, lastName, email } = req.body;
+		const userData = { 
+				username: req.body.username,
+				 password: req.body.password,
+				  firstName: req.body.firstName,
+				   lastName: req.body.lastName,
+				    email: req.body.email,
+				};
 
         if (!username || !password || !firstName || !lastName || !email) {
             return res.status(400).json({ msg: "All fields are required" });
         }
 
-		const checkUserQuery = 'SELECT * FROM students WHERE student_username = ?';
-        connection.query(checkUserQuery, [username], function(err, results) {
-            if (err) {
-                console.error(err);
-                return res.status(500).json({ msg: "Internal Server Error" });
-            }
+		const checkUserQuery = 'SELECT * FROM student WHERE student_username = ?';
+    	connection.query(checkUserQuery, [username], function(err, results) {
+      	if (err) {
+        	console.error('Error checking for existing username:', err);
+        	return res.status(500).send(json.stringify({ msg: "Error checking for existing username" }));
+      	}
+      	if (results.length > 0) {
+        	return res.status(400).send(json.stringify({ msg: "Username already exists" }));
+      	}
 
-            if (results.length > 0) {
-                return res.status(400).json({ msg: "Username already taken" });
-            }
+		const insertUserQuery = 'INSERT INTO students (student_username, student_password, student_first_name, student_last_name, student_emailaddress) VALUES (?, ?, ?, ?, ?)';	
+		connection.query(insertUserQuery, userData, function(err) {
+			if (err) {
+				console.error(err);
+				return res.status(500).send(json.stringify({ msg: "Error inserting user into database" }));
+			}
 
-			const insertUserQuery = 'INSERT INTO students (student_username, student_password, student_first_name, student_last_name, student_emailaddress) VALUES (?, ?, ?, ?, ?)';
-			const userData = [username, hashedPassword, firstName, lastName, email];
-	
-			connection.query(insertUserQuery, userData, function(err, results) {
-				if (err) {
-					console.error(err);
-					return res.status(500).json({ msg: "Error inserting user into database" });
-				}
-
-				res.status(200).json({ msg: "Registration successful" });
+			res.status(200).send(json.stringify({ msg: "Registration successful" }));
 		
-            });
         });
-    });
+
+		}); 
+		
+		});
 
 	app.post('/login', function(req, res) { 
 		const { username, password } = req.body;
@@ -56,34 +62,50 @@ var services = function(app) {
 		connection.query(query, [username], function(err, results) {
             if (err) {
                 console.error(err);
-                return res.status(500).json({ msg: "Internal Server Error" });
+                return res.status(500).send(json.stringify({ msg: "Internal Server Error" }));
             }
 		
-			if (results.length === 0) {
-                return res.status(401).json({ msg: "Invalid username or password" });
+			if (results.length === 0 || results[0].student_password !== password ) {
+                return res.status(401).send(json.stringify({ msg: "Invalid username or password" }));
             }
 
 			const user = results[0];
-			if (user.student_password !== password) {
-                return res.status(401).json({ msg: "Invalid username or password" });
-            }
+			/*if (user.student_password !== password) {
+                return res.status(401).send(json.stringify({ msg: "Invalid username or password" }));
+            }*/
 
     		res.status(200).json({
                 msg: "Login successful",
                 user: {
-					studentID: req.body.studentID,
-					student_first_name: req.body.student_first_name,
-					student_last_name: req.body.student_last_name,
-					student_emailaddress: req.body.student_emailaddress,
-					student_grade: req.body.student_grade, 
-            		student_course_number: req.body.student_course_number,
-            		student_performance_report: req.body.student_performance_report
+					studentID: user.studentID,
+                	student_first_name: user.student_first_name,
+                	student_last_name: user.student_last_name,
+                	student_emailaddress: user.student_emailaddress,
+                	student_grade: user.student_grade,
+                	student_course_number: user.student_course_number,
+                	student_performance_report: user.student_performance_report,
+					role: 'student',
 				}
 			}); 
-    	});
+    	}); 
 	});
-}; 
 
+	app.get('/get-student-ids', function(req, res) {
+		const query = 'SELECT studentID FROM students';
+				
+		connection.query(checkUserQuery, [username], function(err, results) {
+			if (err) {
+				console.error(err);
+				return res.status(500).send(json.stringify({ msg: "Internal Server Error" }));
+			}
+	
+			const studentIDs = results.map(row => row.studentID);
+			res.json(studentIDs);
+			});
+			});
+
+}; 
+module.exports = services;
 
 /*connection.query("INSERT INTO student SET ?", data, function(err) { 
 	if(err) { 
@@ -93,4 +115,3 @@ var services = function(app) {
 	 }
 });*/
 
-module.exports = services;
