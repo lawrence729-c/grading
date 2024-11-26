@@ -12,12 +12,12 @@
  
             <div class="assignments">
             <h2> Modules/Assignments</h2>
-            <div class="assignment-box" draggable = "true">Assignment 1</draggable></div>
-            <div class="assignment-box" draggable = "true">Assignment 2</draggable></div>
-            <div class="assignment-box"draggable = "true" >Assignment 3</draggable></div>
-            <div class="assignment-box"draggable = "true" >Assignment 4</draggable></div>
-            <div class="assignment-box"draggable = "true" >Assignment 5</draggable></div>
-            <div class="assignment-box"draggable = "true" >Assignment 6</draggable></div>
+            <div class="assignment-box" id = "drag1" draggable = "true"  ondragstart="dragAsssignments(event)">Assignment 1</div>
+            <div class="assignment-box" id = "drag2"draggable = "true"   ondragstart="dragAsssignments(event)">Assignment 2</div>
+            <div class="assignment-box" id = "drag3"  draggable = "true" ondragstart="dragAsssignments(event)">Assignment 3</div>
+            <div class="assignment-box" id = "drag4"  draggable = "true" ondragstart="dragAsssignments(event)">Assignment 4</div>
+            <div class="assignment-box" id = "drag5"  draggable = "true" ondragstart="dragAsssignments(event)">Assignment 5</div>
+            <div class="assignment-box" id = "drag6"  draggable = "true" ondragstart="dragAsssignments(event)">Assignment 6</div>
             </div>
 
             <div class="file-types">
@@ -30,29 +30,42 @@
                 <div class="file-type-box">File upload</div>
             </div>
         </div>
-        
+    <!--Student side-->    
     <div class= "uploads"> 
         <div class="file-upload">
-            <p>Upload file here<nav class="navbar"> <a href="upload-file" span class="arrow">&#9662;</span></a></nav></p>
+            <p>Upload file here
+                <nav class="navbar"> 
+                    <a href="upload-file" span class="arrow">&#9662;</span></a>
+                </nav>
+            </p>
         </div>
         <div class="submit">
-            <p>Submit assignment here<nav class="navbar"> <a href="submit-assignment" span class="arrow">&#9662;</span></a></nav></p>
+            <p>Submit assignment here
+                <nav class="navbar"> 
+                    <a href="submit-assignment"><span class="arrow">&#9662;</span></a>
+                </nav>
+            </p>
+            <div id="drop1" ondrop="dropAssignnments(event)" ondragover="allowDrop(event)">
+                Drop assignments here
+            </div>
         </div>
     </div>
 
+    <!--Admin side-->
     <div class= "modify-due-date">
         <label for="change-due-date">Change Due Date</label>
         <input type="text" id="change" placeholder= "Enter new due date" >
        <!-- <time datetime="|">|</time> -->
         <br><br>
         <label for="assignment-id">Enter Assignment ID</label>
-        <input type="text" id="assignment" placeholder= "Enter assignment ID" >
+        <input type="text" id="assignment" placeholder= "Enter assignment ID"showAssignmentIDs()>
         <br><br>
         <a href= "modules.html">Back</a>
         <button class="change" onclick="">Change</button>
 
     </div>
 
+    <!--Student side-->
     <div class = "due-container">
         <h3>What's Due</h3>
         <div class= "due-list"> 

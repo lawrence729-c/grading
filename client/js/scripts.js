@@ -1,5 +1,7 @@
 /*--experimental-webstorage*/
 
+const SendmailTransport = require("nodemailer/lib/sendmail-transport");
+
 const loginForm = document.getElementById('loginForm');
 const loginContainer = document.getElementById('loginContainer');
 const logoutContainer = document.getElementById('logoutContainer');
@@ -11,6 +13,8 @@ const registrationContainer = document.getElementById('registrationContainer');
 
 const exactUsername = 'fred123';
 const exactPassword = 'toolbar56';
+
+const modifyDate = document.getElementById('modifyDate');
 
 registrationForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -194,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const studentIdList = document.getElementById('student-dropdown');
     const enterIdInput = document.getElementById('enter-id');
 
-    function fetchStudentIDs(){
+    function fetchStudentIDs() {
         fetch('http://localhost:5000/fetchStudentIDs') 
         .then(response => response.json())
         .then(data => {
@@ -226,20 +230,77 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('home-button').addEventListener('click', () => { 
     window.location.href = '/home';
     });
-    
-/*document.getElementById('DOMContentLoaded', () => {
-const assignments = ondragstart(dragAsssignments(ev));
-assignments = ondragover(drop(ev));
-});
+
+function allowDrop(ev) {
+    ev.preventDefault();
+  }
 
 function dragAsssignments(ev) { 
-    ev.dataTransfer.setData("text", ev.target.assignments);
-    event.preventDefault
+    ev.dataTransfer.setData("text", ev.target.id);
 }
 
-function drop(ev){ 
+function dropAssignments(ev){ 
     ev.preventDefault();
-    assignments = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(assignments))
+    const data = ev.dataTransfer.getData("text");
+    const draggedAssignment = document.getElementById(data);
+    ev.target.appendChild(draggedAssignment);
+
+    draggedAssignment.style.backgroundColor = "#ccc";
+    draggedAssignment.setAttribute("draggable", "false");
 }
-*/
+
+    async function fetchAssignmentIDs() {
+        try {
+            const response = await fetch('/get-assignment-ids'); // Assuming an endpoint to fetch assignment IDs
+            const assignmentIDs = await response.json();
+    
+            // Now you can use the assignment IDs to display them or handle further operations
+            console.log(assignmentIDs);  // For debugging
+    
+            return assignmentIDs;
+        } catch (err) {
+            console.error("Error fetching assignment IDs:", err);
+            return [];
+        }
+    }
+
+    async function showAssignmentIDs() {
+        const assignmentIDs = await fetchAssignmentIDs();
+        
+        // You can use the fetched assignment IDs to dynamically update the UI or perform other tasks
+        if (assignmentIDs.length > 0) {
+            console.log("Assignment IDs fetched:", assignmentIDs);
+        } else {
+            console.log("No assignment IDs available.");
+        }
+    }
+    
+    // Call the function (for example, when the page loads or on a button click)
+    showAssignmentIDs();
+
+    document.getElementById('modify-due-date').addEventListener('click', () => { 
+        modifyDate
+    });
+
+    function composeMessage(){ 
+        /*Employ nodemailer's inherent functions to compose message functionality*/
+        if(userRole.student_first_name === loggedInUser){ 
+            userRole.student_first_name.email
+    
+        }
+        else if(userRole === loggedInUser) { 
+
+        } else{ 
+            switchViewBasedOnRole();
+        }
+    }
+
+    function yourInbox(){ 
+        const messages = [/*callback function of composed messages from the admin side and the user side*/]
+    }
+
+    function starredMessages(){ 
+       const markedMessgae = document.getElementById('markedMessage');
+       /*Retrieve global variable of when whichever user clicks the event to mark their message in the composeMessage() function.*/
+
+    }

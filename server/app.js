@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require("path");
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use("/client", express.static(path.resolve(__dirname + "/../client/")));
+/*app.use("/client", nodemailer.static(path.resolve(__dirname + "/../client/")))*/
 
 //prep the server
 var server;

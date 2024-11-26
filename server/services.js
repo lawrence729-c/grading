@@ -102,9 +102,22 @@ var services = function(app) {
 			const studentIDs = results.map(row => row.studentID);
 			res.json(studentIDs);
 			});
-			});
+			}); 
 
-}; 
+app.get('/get-assignment-ids', function(req, res) {
+    const query = 'SELECT assignmentsID FROM assignments';  // Adjust the query to your table structure
+    connection.query(query, function(err, results) {
+        if (err) {
+            console.error(err);
+            return res.status(500).send(json.stringify({ msg: "Internal Server Error" }));
+        }
+		const assignmentIDs = results.map(row => row.assignmentsID);
+        res.json(assignmentIDs);  // Send back assignments list to the client
+    });
+});
+
+};
+
 module.exports = services;
 
 /*connection.query("INSERT INTO student SET ?", data, function(err) { 

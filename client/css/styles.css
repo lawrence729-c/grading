@@ -85,6 +85,15 @@ nav a{
    text-align: center;
 }
 
+.registration-container{ 
+   margin-top: 20px;
+   padding: 20px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   width: 300px;
+   text-align: center;
+}
+
 input[type="text"], input[type="password"] {
    padding: 8px;
    margin: 5px;
@@ -140,7 +149,7 @@ button:hover {
    background-color: darkblue;
 }
 
-.Assignments-container {
+.assignments-container {
    display: flex;
    flex-direction: column;
    gap: 20px;
@@ -199,6 +208,13 @@ button:hover {
    border-radius: 8px;
    width: 200px;
 }
+
+.submit #drop1 {
+   height: 100px;
+   border: 2px dashed #000;
+   margin-top: 20px;
+   padding: 10px;
+ }
 
 .modify-due-date {
    margin-top: 20px;
@@ -292,6 +308,28 @@ input[type="text"]{
    top: 20%;
    right: 40px;
    max-width: 250px;
+ }
+
+ .compose-container{ 
+   background-color: gray; 
+   padding: 15px;
+   margin: 15px 0;
+   position: absolute;
+   top: 50%;
+   bottom: 40%;
+   text-align: center;
+   border-radius: 20px;
+   width: 350px;
+ }
+
+ .message{ 
+   background-color: white;
+   color: black;
+   padding: 15px;
+   margin: 15px 0;
+   text-align: left;
+   border-radius: 20px;
+   width: 2500px;
  }
 
  .calculate{ 
