@@ -28,6 +28,10 @@ var router = function(app) {
 		});
 
 	app.get("/modules", function(req, res) { 	
+		res.status(200).sendFile(path.join(__dirname + "/../client/html/modules.html"));
+	});
+	 
+	app.get("/mail", function(req, res) { 
 		/*const loggedInUser = req.cookies.loggedInUser;
 		if(!loggedInUser){ 
 			return res.status(402).json({msg: 'Access Denied'});
@@ -35,17 +39,6 @@ var router = function(app) {
 		if(!loggedInUser || loggedInUser !== 'admin'){ 
 			return res.status(402).json({msg: 'Access Denied'});
 		}*/
-		res.status(200).sendFile(path.join(__dirname + "/../client/html/modules.html"));
-	});
-	 
-	app.get("/mail", function(req, res) { 
-		const loggedInUser = req.cookies.loggedInUser;
-		if(!loggedInUser){ 
-			return res.status(402).json({msg: 'Access Denied'});
-		}
-		if(!loggedInUser || loggedInUser !== 'admin'){ 
-			return res.status(402).json({msg: 'Access Denied'});
-		}
 		res.status(200).sendFile(path.join(__dirname + "/../client/html/mail/mail.html"));
 	}); 
 
@@ -79,26 +72,11 @@ var router = function(app) {
 			res.status(200).sendFile(path.join(__dirname + "/../client/html/mail/reports.html"));
 		});
 
-
 	app.get("/grades", function(req, res) { 
-		/*const loggedInUser = req.cookies.loggedInUser;
-		if(!loggedInUser){ 
-			return res.status(402).json({msg: 'Access Denied'});
-		}
-		if(!loggedInUser || loggedInUser !== 'admin'){ 
-			return res.status(402).json({msg: 'Access Denied'});
-		}*/
 		res.status(200).sendFile(path.join(__dirname + "/../client/html/grades.html"));
 	});
 
 	app.get("/calculator", function(req, res) { 
-		/*const loggedInUser = req.cookies.loggedInUser;
-		if(!loggedInUser){ 
-			return res.status(402).json({msg: 'Access Denied'});
-		}
-		if(!loggedInUser || loggedInUser !== 'admin'){ 
-			return res.status(402).json({msg: 'Access Denied'});
-		}*/
 		res.status(200).sendFile(path.join(__dirname + "/../client/html/calculator.html"));
 	});
 
