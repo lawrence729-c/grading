@@ -9,8 +9,9 @@
     <header class="header">
         <h1>Grading</h1>
       </header>
+
     <div class = "grades-container" >
-        <div class="navbar"> 
+<div class="navbar"> 
             <div class="grades">
                 <h2>Grades</h2>
                 <div class="assignment-box2">Assignment 1</div>
@@ -22,29 +23,48 @@
                 </div>
 
         <div class="student-name">
-            <h3>Enter student's name</h3>
+            <h3>Enter student's ID/name</h3>
+            <span class="arrow"id="dropdown-arrow">&#9662;</span>
+            <div class="student-id-list" style="display:none;">
+        </div>
         </div>
 
         <div class="score-grade" >
             <div class="score">Weighted Score</div>
             <div class="your-grade">Your Grade</div>
         </div>
-    <div class="status">Update Status</div>
+
     <div class="grade-status">Update Grades</div>  
-    </div> 
 
-    <div class = "due-container">
-        <h3>What's Due</h3>
-        <div class= "due-list"> 
-            <ul> 
-                <li>  </li> 
-                <li>  </li>
-                <li>  </li>
-            </ul>
-        </div>
+    <div class="input-grades">
+        <h3>Input Grades for Students</h3>
+        <label for="assignment-id">Assignment ID:</label>
+        <input type="number" id="assignmentID" placeholder="Enter Assignment ID" />
+        <br /><br />
+        <label for="student-id">Student ID:</label>
+        <input type="number" id="studentID" placeholder="Enter Student ID" />
+        <br /><br />
+        <label for="grade">Grade:</label>
+        <input type="text" id="grade" placeholder="Enter Grade" />
+        <br /><br />
+        <button onclick="submitGrade()">Submit Grade</button>
     </div>
-    </div>
+</div> 
 
-    <img src = "https://as1.ftcdn.net/jpg/01/30/82/92/1000_F_130829283_kDFS1fSIH4qXm5cPsB6WEagrdB0BD1oo.jpg" alt = "grading-image" class= "center-right-image" >
-    <script src="/client/js/scripts.js"></script>    
+<div class = "due-container">
+    <h3>What's Due</h3>
+    <div class= "due-list"> 
+        <ul> 
+            <li>  </li> 
+            <li>  </li>
+            <li>  </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+   <!-- <img src = "https://as1.ftcdn.net/jpg/01/30/82/92/1000_F_130829283_kDFS1fSIH4qXm5cPsB6WEagrdB0BD1oo.jpg" alt = "grading-image" class= "center-right-image" > -->
+    <script src="/client/js/assignments2.js"></script>
+    <script src="/client/js/grades.js"></script>
 </body>

@@ -7,73 +7,107 @@
     <header class="header">
         <h1>Grading</h1>
       </header>
-    <div class = "assignments-container" >
-        <div class="navbar"> 
- 
-            <div class="assignments">
-            <h2> Modules/Assignments</h2>
-            <div class="assignment-box" id = "drag1" draggable = "true"  ondragstart="dragAsssignments(event)">Assignment 1</div>
-            <div class="assignment-box" id = "drag2"draggable = "true"   ondragstart="dragAsssignments(event)">Assignment 2</div>
-            <div class="assignment-box" id = "drag3"  draggable = "true" ondragstart="dragAsssignments(event)">Assignment 3</div>
-            <div class="assignment-box" id = "drag4"  draggable = "true" ondragstart="dragAsssignments(event)">Assignment 4</div>
-            <div class="assignment-box" id = "drag5"  draggable = "true" ondragstart="dragAsssignments(event)">Assignment 5</div>
-            <div class="assignment-box" id = "drag6"  draggable = "true" ondragstart="dragAsssignments(event)">Assignment 6</div>
-            </div>
 
-            <div class="file-types">
-                <h2 FIle Type(s)></h2>
-                <div class="file-type-box">.doc</div>
-                <div class="file-type-box">.doc .pdf</div>
-                <div class="file-type-box">File upload</div>
-                <div class="file-type-box">.pdf</div>
-                <div class="file-type-box">.pptx</div>
-                <div class="file-type-box">File upload</div>
+<div class="assignments-container">
+    <div class="navbar">
+        <div class="assignments">
+            <h2>Modules/Assignments</h2>
+            <!-- Use a checkbox to verify submission -->
+            <div class="assignment-box">
+                <input type="checkbox" id="assignment1" onclick="verifySubmission(this, 'https://docs.google.com/document/d/1mR1fWjnw3tSVvopcGR43lbQddLahDcO12yD7bavl024/edit?tab=t.0')">
+                <span class="assignment-title" onclick="window.location.href='https://docs.google.com/document/d/1mR1fWjnw3tSVvopcGR43lbQddLahDcO12yD7bavl024/edit?tab=t.0'">Assignment 1</span>
+            </div>
+            <div class="assignment-box">
+                <input type="checkbox" id="assignment2" onclick="verifySubmission(this, 'file:///C:/Users/nmain/Downloads/Assignment%202%20-%20Grading%20System.pdf')">
+                <span class="assignment-title" onclick="window.location.href='file:///C:/Users/nmain/Downloads/Assignment%202%20-%20Grading%20System.pdf'">Assignment 2</span>
+            </div>
+            <div class="assignment-box">
+                <input type="checkbox" id="assignment3" onclick="verifySubmission(this, 'file:///C:\Users\nmain\OneDrive\Documents\gradingproject\grading\Assignment 3 Objective.txt')">
+                <span class="assignment-title" onclick="window.location.href=''">Assignment 3</span>
+            </div>
+            <div class="assignment-box">
+                <input type="checkbox" id="assignment4" onclick="verifySubmission(this, 'file:///C:/Users/nmain/Downloads/Assignment%204%20-%20Grading%20System.pdf')">
+                <span class="assignment-title" onclick="window.location.href='file:///C:/Users/nmain/Downloads/Assignment%204%20-%20Grading%20System.pdf'">Assignment 4</span>
+            </div>
+            <div class="assignment-box">
+                <input type="checkbox" id="assignment5" onclick="verifySubmission(this, 'https://docs.google.com/presentation/d/1iX7q1qNBFzrpsncSg7Y4igpmk5TqkzSmg33sVYt4B1E/edit#slide=id.p')">
+                <span class="assignment-title" onclick="window.location.href='https://docs.google.com/presentation/d/1iX7q1qNBFzrpsncSg7Y4igpmk5TqkzSmg33sVYt4B1E/edit#slide=id.p'">Assignment 5</span>
+            </div>
+            <div class="assignment-box">
+                <input type="checkbox" id="assignment6" onclick="verifySubmission(this, 'file://C:\Users\nmain\OneDrive\Documents\gradingproject\grading\Assignment 6 Objective.txt')">
+                <span class="assignment-title" onclick="window.location.href=''">Assignment 6</span>
             </div>
         </div>
-    <!--Student side-->    
-    <div class= "uploads"> 
-        <div class="file-upload">
-            <p>Upload file here
-                <nav class="navbar"> 
-                    <a href="upload-file" span class="arrow">&#9662;</span></a>
-                </nav>
-            </p>
-        </div>
-        <div class="submit">
-            <p>Submit assignment here
-                <nav class="navbar"> 
-                    <a href="submit-assignment"><span class="arrow">&#9662;</span></a>
-                </nav>
-            </p>
-            <div id="drop1" ondrop="dropAssignnments(event)" ondragover="allowDrop(event)">
-                Drop assignments here
-            </div>
+
+        <div class="file-types">
+            <h2>File Type(s)</h2>
+            <div class="file-type-box">.doc</div>
+            <div class="file-type-box">.doc .pdf</div>
+            <div class="file-type-box">File upload</div>
+            <div class="file-type-box">.pdf</div>
+            <div class="file-type-box">.pptx</div>
+            <div class="file-type-box">File upload</div>
         </div>
     </div>
 
-    <!--Admin side-->
+    <div class="uploads">
+        <div class="file-upload">
+            <p>Upload file here
+                <nav class="navbar">
+                    <a href="upload-file"><span class="arrow">&#9662;</span></a>
+                </nav>
+            </p>
+        </div>
+        </div>
+        <!--<div class="submit">
+            <p>Submit assignment here
+                <nav class="navbar">
+                    <a href="submit-assignment"><span class="arrow">&#9662;</span></a>
+                </nav>
+            </p>
+            <div id="drop1" ondrop="dropAssignments(event)" ondragover="allowDrop(event)">
+                Drop assignments here
+            </div>
+        </div>
+    </div>-->
+
     <div class= "modify-due-date">
         <label for="change-due-date">Change Due Date</label>
         <input type="text" id="change" placeholder= "Enter new due date" >
-       <!-- <time datetime="|">|</time> -->
         <br><br>
         <label for="assignment-id">Enter Assignment ID</label>
         <input type="text" id="assignment" placeholder= "Enter assignment ID"showAssignmentIDs()>
         <br><br>
         <a href= "modules.html">Back</a>
-        <button class="change" onclick="">Change</button>
-
+        <button class="change" onclick="updateDueDate()">Change</button>
+    
     </div>
 
-    <!--Student side-->
-    <div class = "due-container">
+    <div class="status"> 
+        <h3>Update Status</h3>
+        <label for="assignment-Id">Assignment ID:</label>
+        <input type="number" id="enter-assignment-id" placeholder="Input Assignment ID" />
+        <br /><br />
+        <label for="student-Id">Student ID:</label>
+        <input type="number" id="enter-student-id" placeholder="Input Student ID" />
+        <br /><br />
+        <label for="assignmentStatus">Assignment Status:</label>
+        <input type="text" id="assignment-status" placeholder="Enter Assignment Status" />
+        <br /><br />
+        <button onclick="updateStatus()">Update</button>
+    </div>
+
+    <div class="due-container">
         <h3>What's Due</h3>
-        <div class= "due-list"> 
-            <!-- Add due assignments-->
+        <div class="due-list">
+            <li>Assignment 1</li> 
+            <li>Assignment 2</li>
+            <li>Assignment 3</li>
         </div>
     </div>
 </div>
 
+
     <!--<img src = "https://as1.ftcdn.net/jpg/01/30/82/92/1000_F_130829283_kDFS1fSIH4qXm5cPsB6WEagrdB0BD1oo.jpg" alt = "grading-image" class= "center-right-image" > -->
-    <script src="/client/js/scripts.js"></script>    
+<script src="/client/js/assignments2.js"></script>
 </body>

@@ -1,1 +1,1 @@
-SELECT * FROM grading.student;
+SELECT * FROM grading.students LIMIT 0, 14
