@@ -1,4 +1,4 @@
-/*const userRole = window.localStorage.getItem('userRole');
+const userRole = window.localStorage.getItem('userRole');
 const loggedInUser = window.localStorage.getItem('loggedInUser');
 const redirectPage = window.localStorage.getItem('redirectPage');
 const loginContainer = document.getElementById('loginContainer');
@@ -42,7 +42,7 @@ function displayLogOutView(username){
     loginContainer.style.display = 'none';
     logoutContainer.style.display = 'block';
     loggedInUserElement.textContent = username;
-}*/
+}
 
 function restrictAccessIfNotLoggedIn() {
     const restrictedPages = ['/modules', '/mail', '/grades'];
