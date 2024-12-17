@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: rgb(240, 126, 32);">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Inbox</title>
+</head>
+<body>
+    <h1>Enter Your Student Name</h1>
+    <input type="text" id="studentName" placeholder="Enter student name" required>
+    <button id="viewReport">Submit</button>
+
+    <h3>Inbox</h3>
+    <div id="studentReport" style="margin-top: 20px;background-color: white; color: rgb(22, 22, 22)"></div>
+
+    <script>
+        document.getElementById('viewReport').addEventListener('click', () => {
+            const studentName = document.getElementById('studentName').value.trim();
+            const performanceReports = {
+                "Jack": "Jack is doing a wonderful job.",
+                "Christopher": "Christopher continues to do amazing in this class.",
+                "Benjamin": "Excellent performance by Benjamin.",
+                "Olivia": "Olivia continues to do an awesome job.",
+                "William": "William needs to have a talk with his counselor as he is failing.",
+                "David": "David needs to contact with his counselor due to poor performance in this class.",
+                "Henry": "Henry is doing a great job and continues to show consistency.",
+                "Jennifer": "Jennifer is doing well in this class and always gives her best effort.",
+                "Ricky": "Ricky is doing poorly in this class and has not completed some of his assignments and there is concern for him failing this class.",
+                "Daniel": "Daniel is doing exceptionally well in this class.",
+                "Mike": "Mike is doing exceptionally well and is on track to passing this course.",
+                "Evelyn": "Excellent performance by Evelyn."
+            };
+
+            if (performanceReports[studentName]) {
+                document.getElementById('studentReport').innerText = performanceReports[studentName];
+            } else {
+                document.getElementById('studentReport').innerText = "Student not found.";
+            }
+        });
+    </script>
+</body>
+</html>

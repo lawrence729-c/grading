@@ -7,7 +7,7 @@
     <header class="header">
         <h1>Grading</h1>
       </header>
-    <div class = "mail-container" >
+    <div class = "mail-container" style="display: none;">
         <div class="navbar"> 
             <div class= "mail">Mail</div>
     <div class= "mail-options"> 
@@ -28,6 +28,71 @@
     </div>
     </div>
 
+    <div class = "admin-mail-container" >
+        <div class="navbar"> 
+            <div class= "mail">Mail</div>
+    <div class= "mail-options"> 
+        <nav class="navbar">
+            <a href= "/compose">Compose</a>
+            <br><br>
+            <a href= "/inbox">Inbox</a>
+            <br><br>
+            <a href= "/starred">Starred</a>
+            <br><br>
+            <a href= "/sent">Sent</a>
+            <br><br>
+            <a href= "/drafts">Drafts</a>
+            <br><br>
+            <a href= "/reports">Reports</a>
+        </nav>    
+    </div>
+    </div>
+    </div>
+
+    <div class="student-mail-container"style="display: none;">
+        <div class="navbar">
+            <div class="mail">Mail</div>
+            <div class="mail-options">
+                <nav class="navbar">
+                    <a href="/compose">Compose</a>
+                    <br><br>
+                    <a href= "/studentinbox">Inbox</a>
+                    <br><br>
+                    <a href="/starred">Starred</a>
+                    <br><br>
+                    <a href="/sent">Sent</a>
+                    <br><br>
+                    <a href="/drafts">Drafts</a>
+                    <br><br>
+                    <a href="/reports">Reports</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Counselor Mail Container -->
+    <div class="counselor-mail-container"style="display: none;" >
+        <div class="navbar">
+            <div class="mail">Mail</div>
+            <div class="mail-options">
+                <nav class="navbar">
+                    <a href="/compose">Compose</a>
+                    <br><br>
+                    <a href= "/counselorinbox">Inbox</a>
+                    <br><br>
+                    <a href="/starred">Starred</a>
+                    <br><br>
+                    <a href="/sent">Sent</a>
+                    <br><br>
+                    <a href="/drafts">Drafts</a>
+                    <br><br>
+                    <a href="/reports">Reports</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
     <img src="https://addons-media.operacdn.com/media/CACHE/images/extensions/86/272386/1.2.6-rev1/images/6cc5725d6f6e64f9b14754eb80f6fbaf/747af49bcf30be6150a11fc780b2c744.jpeg" alt="email-image" class="top-right-image">
-    <script src="/client/js/mail.js"></script>
+    <script src="/client/js/rolebasedlogin.js"></script>
+    <!--<script src="/client/js/mail.js"></script>-->
     </body>

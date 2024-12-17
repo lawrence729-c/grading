@@ -1,3 +1,10 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const sendButton = document.getElementById('send-message');
+    if (sendButton) {
+        sendButton.addEventListener('click', composeMessage);
+    }
+});
+
 function composeMessage(){ 
     /*Employ nodemailer's inherent functions to compose message functionality*/
     const to = document.getElementById('message-to').value;
@@ -26,23 +33,23 @@ fetch('http://localhost:5000/send-email', {
 }
 
 function fetchMessages(type) {
-    fetch(`http://localhost:5000/${type}`)  // Adjust with actual endpoint for inbox/starred/etc.
-        .then(response => response.json())
-        .then(data => {
-            const messageContainer = document.getElementById(`${type}-messages`);
-            messageContainer.innerHTML = '';  // Clear previous messages
+    fetch('http://localhost:5000/inbox')
+    .then(response => response.json())
+    .then(data => {
+        const messageContainer = document.getElementById('inbox-messages');
+        messageContainer.innerHTML = '';  // Clear previous messages
 
-            data.forEach(message => {
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('message-item');
-                messageElement.innerHTML = `
-                    <span class="message-subject">${message.subject}</span>
-                    <span class="message-date">${message.date}</span>
-                `;
-                messageContainer.appendChild(messageElement);
-            });
-        })
-        .catch(error => console.error('Error fetching messages:', error));
+        data.forEach(message => {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message-item');
+            messageElement.innerHTML = `
+                <span class="message-subject">${message.subject}</span>
+                <span class="message-date">${message.date}</span>
+            `;
+            messageContainer.appendChild(messageElement);
+        });
+    })
+    .catch(error => console.error('Error fetching messages:', error));
 }
 
 // Example usage: fetch inbox messages when the page loads
@@ -50,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchMessages('inbox');
 });
 
-function fetchMessageReports(type) {
+/*function fetchMessageReports(type) {
     fetch(`http://localhost:5000/${type}`) // Adjust with actual endpoint for inbox/starred/etc.
         .then(response => response.json())
         .then(data => {
@@ -81,7 +88,7 @@ function fetchMessageReports(type) {
             });
         })
         .catch(error => console.error('Error fetching messages:', error));
-}
+}*/
 
 function composeMessageReports(){
     const to = document.getElementById('message-to').value;

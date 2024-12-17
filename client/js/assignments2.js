@@ -68,9 +68,9 @@ function changeDueDate(assignmentID, newDueDate) {
 }
 
 function updateStatus(){ 
-    const assignmentID = document.getElementById('enter-assignment-id');
-    const studentID = document.getElementById('enter-student-id');
-    const status = document.getElementById('assigment-status');
+    const assignmentID = document.getElementById('enter-assignment-id').value;
+    const studentID = document.getElementById('enter-student-id').value;
+    const status = document.getElementById('assignment-status').value;
 
     if(!assignmentID || !studentID || !status){ 
 		alert( "All fields are required in order to update");
@@ -103,6 +103,27 @@ function updateStatus(){
 
 }
 
+// Function to toggle visibility of file input
+function toggleFileInput() {
+    const fileInput = document.getElementById('fileInput');
+    // Toggle visibility of file input field
+    if (fileInput.style.display === 'none' || fileInput.style.display === '') {
+        fileInput.style.display = 'block';
+    } else {
+        fileInput.style.display = 'none';
+    }
+}
+
+// Handle the file upload event
+function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+        console.log('File selected: ' + file.name);
+        // You can add additional code here to upload the file to the server or handle the file as needed
+    }
+}
+
+
 function displayDueAssignments(assignments) {
     const dueList = document.querySelector('.due-list');
     assignments.forEach(assignment => {
@@ -111,13 +132,3 @@ function displayDueAssignments(assignments) {
         dueList.appendChild(li);
     });
 }
-
-// Display the assignment file in the container
-function displayAssignmentFile(fileUrl) {
-    const assignmentContainer = document.getElementById('assignments-container'); // This will display the assignment
-
-    assignmentContainer.innerHTML = `
-        <iframe src="${fileUrl}" width="100%" height="600px"></iframe>
-        <p>Assignment file loaded. Please review it.</p>
-    `;
-} 

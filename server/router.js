@@ -30,6 +30,10 @@ var router = function(app) {
 	app.get("/modules", function(req, res) { 	
 		res.status(200).sendFile(path.join(__dirname + "/../client/html/modules.html"));
 	});
+
+	app.get("/modules2", function(req, res) { 	
+		res.status(200).sendFile(path.join(__dirname + "/../client/html/modules2.html"));
+	});
 	 
 	app.get("/mail", function(req, res) { 
 		/*const loggedInUser = req.cookies.loggedInUser;
@@ -51,6 +55,16 @@ var router = function(app) {
 			
 			res.status(200).sendFile(path.join(__dirname + "/../client/html/mail/inbox.html"));
 		}); 
+
+		app.get("/studentinbox", function(req, res) { 
+			
+			res.status(200).sendFile(path.join(__dirname + "/../client/html/mail/studentinbox.html"));
+		});
+
+		app.get("/counselorinbox", function(req, res) { 
+			
+			res.status(200).sendFile(path.join(__dirname + "/../client/html/mail/counselorinbox.html"));
+		});
 
 		app.get("/starred", function(req, res) { 
 			
@@ -74,6 +88,14 @@ var router = function(app) {
 
 	app.get("/grades", function(req, res) { 
 		res.status(200).sendFile(path.join(__dirname + "/../client/html/grades.html"));
+	});
+
+	app.get("/view-grades", function(req, res) { 
+		res.status(200).sendFile(path.join(__dirname + "/../client/html/view-grades.html"));
+	});
+	
+	app.get("/counselorview-grades", function(req, res) { 
+		res.status(200).sendFile(path.join(__dirname + "/../client/html/counselorview-grades.html"));
 	});
 
 	app.get("/calculator", function(req, res) { 

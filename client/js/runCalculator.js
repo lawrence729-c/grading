@@ -13,6 +13,11 @@ function calculateTargetGrade() {
     let resultDiv = document.getElementById('result');
     resultDiv.style.display = 'block';
     resultDiv.innerHTML = `You need to score <strong>${requiredGrade.toFixed(2)}%</strong> on your final assignment to reach your target grade of ${targetGrade}%.`;
+
+    if(requiredGrade > 100){ 
+        alert("Target score is out of scope")
+        return;
+    }
 }
 
 function clearFields() {

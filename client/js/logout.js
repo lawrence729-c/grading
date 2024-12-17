@@ -1,4 +1,3 @@
-const logoutContainer = document.getElementById('logoutContainer');
 const logoutButton = document.getElementById('logoutButton');
 const loginContainer = document.getElementById('loginContainer');
 const loggedInUserElement = document.getElementById('loggedInUser');
@@ -8,3 +7,4 @@ function displayLogOutView(username){
     logoutContainer.style.display = 'block';
     loggedInUserElement.textContent = username;
 }
+

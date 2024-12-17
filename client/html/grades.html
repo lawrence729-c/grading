@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang = 'en' class= ''>
-<head>  
+<html lang='en' class=''>
+
+<head>
     <meta charset="UTF-8">
-    <title>Grades</title>  
-    <link rel = 'stylesheet' href = "/client/css/styles.css" />
-    </head>
+    <title>Grades</title>
+    <link rel='stylesheet' href="/client/css/styles.css" />
+</head>
+
 <body>
     <header class="header">
         <h1>Grading</h1>
-      </header>
+    </header>
 
-    <div class = "grades-container" >
-<div class="navbar"> 
+    <div class="grades-container">
+        <div class="navbar">
             <div class="grades">
                 <h2>Grades</h2>
                 <div class="assignment-box2">Assignment 1</div>
@@ -20,51 +22,62 @@
                 <div class="assignment-box2">Assignment 4</div>
                 <div class="assignment-box2">Assignment 5</div>
                 <div class="assignment-box2">Assignment 6</div>
-                </div>
+            </div>
 
-        <div class="student-name">
-            <h3>Enter student's ID/name</h3>
-            <span class="arrow"id="dropdown-arrow">&#9662;</span>
-            <div class="student-id-list" style="display:none;">
+            <div class="student-name">
+                <h3>Enter student's ID/name</h3>
+                <input type="text" id="studentname-id" placeholder="Enter student's ID/name" />
+                <br /><br />
+
+                <label for="grade-assignment1">Grade for Assignment 1</label>
+                <input type="text" id="grade-assignment1" placeholder="Enter Grade" />
+                <br /><br />
+
+                <label for="grade-assignment2">Grade for Assignment 2</label>
+                <input type="text" id="grade-assignment2" placeholder="Enter Grade" />
+                <br /><br />
+
+                <label for="grade-assignment3">Grade for Assignment 3</label>
+                <input type="text" id="grade-assignment3" placeholder="Enter Grade" />
+                <br /><br />
+
+                <label for="grade-assignment4">Grade for Assignment 4</label>
+                <input type="text" id="grade-assignment4" placeholder="Enter Grade" />
+                <br /><br />
+
+                <label for="grade-assignment5">Grade for Assignment 5</label>
+                <input type="text" id="grade-assignment5" placeholder="Enter Grade" />
+                <br /><br />
+
+                <label for="grade-assignment6">Grade for Assignment 6</label>
+                <input type="text" id="grade-assignment6" placeholder="Enter Grade" />
+                <br /><br />
+
+                <label for="avg-grade">Average Grade</label>
+                <input type="text" id="avg-grade" placeholder="Enter Average Grade" />
+                <br /><br />
+
+                <button onclick="publishGrades()">Publish Grades</button>
+            </div>
         </div>
+
+        <div class="input-grades">
+            <h3>Input Grades for Students</h3>
+            <label for="assignment-id">Assignment ID:</label>
+            <input type="number" id="assignmentID" placeholder="Enter Assignment ID" />
+            <br /><br />
+            <label for="student-id">Student ID:</label>
+            <input type="number" id="studentID" placeholder="Enter Student ID" />
+            <br /><br />
+            <label for="grade">Grade:</label>
+            <input type="text" id="grade" placeholder="Enter Grade" />
+            <br /><br />
+            <button onclick="submitGrade()">Submit Grade</button>
         </div>
-
-        <div class="score-grade" >
-            <div class="score">Weighted Score</div>
-            <div class="your-grade">Your Grade</div>
-        </div>
-
-    <div class="grade-status">Update Grades</div>  
-
-    <div class="input-grades">
-        <h3>Input Grades for Students</h3>
-        <label for="assignment-id">Assignment ID:</label>
-        <input type="number" id="assignmentID" placeholder="Enter Assignment ID" />
-        <br /><br />
-        <label for="student-id">Student ID:</label>
-        <input type="number" id="studentID" placeholder="Enter Student ID" />
-        <br /><br />
-        <label for="grade">Grade:</label>
-        <input type="text" id="grade" placeholder="Enter Grade" />
-        <br /><br />
-        <button onclick="submitGrade()">Submit Grade</button>
     </div>
-</div> 
 
-<div class = "due-container">
-    <h3>What's Due</h3>
-    <div class= "due-list"> 
-        <ul> 
-            <li>  </li> 
-            <li>  </li>
-            <li>  </li>
-        </ul>
-    </div>
-</div>
+    <br><br>
 
-</div>
-
-   <!-- <img src = "https://as1.ftcdn.net/jpg/01/30/82/92/1000_F_130829283_kDFS1fSIH4qXm5cPsB6WEagrdB0BD1oo.jpg" alt = "grading-image" class= "center-right-image" > -->
-    <script src="/client/js/assignments2.js"></script>
+    <!-- <img src = "https://as1.ftcdn.net/jpg/01/30/82/92/1000_F_130829283_kDFS1fSIH4qXm5cPsB6WEagrdB0BD1oo.jpg" alt = "grading-image" class= "center-right-image" > -->
     <script src="/client/js/grades.js"></script>
 </body>

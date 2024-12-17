@@ -6,10 +6,15 @@ registrationForm.addEventListener('submit', (event) => {
 
     const registerUsername = document.getElementById('registerUsername').value;
     const registerPassword = document.getElementById('registerPassword').value;
-    //const repeatPassword = document.getElementById('repeatPassword').value;
+    const repeatPassword = document.getElementById('repeatPassword').value;
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
     const email = document.getElementById('email').value;
+
+    if (registerPassword !== repeatPassword) {
+        alert('Passwords do not match!');
+        return;
+    }
 
     fetch('http://localhost:5000/register', { 
         method: 'POST',

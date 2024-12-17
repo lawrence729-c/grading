@@ -1,5 +1,5 @@
-//const loginForm = document.getElementById('loginForm');
-//const loginButton = document.getElementById('login');
+const loginForm = document.getElementById('loginForm');
+const loginButton = document.getElementById('login');
 
 loginButton.addEventListener('click', function(event) {
     event.preventDefault();
@@ -26,6 +26,8 @@ loginButton.addEventListener('click', function(event) {
     .then(response => response.json())
     .then(data => {
         if (data.msg === 'Login successful') {
+            console.log('Username:', username);
+            console.log('Password:', password);
             // Store user info (can also store in session/local storage)
             localStorage.setItem('user', JSON.stringify(data.user));
 

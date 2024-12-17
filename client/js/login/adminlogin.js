@@ -25,13 +25,10 @@ loginButton.addEventListener('click', function(event) {
     .then(response => response.json())
     .then(data => {
         if (data.msg === 'Login successful') {
+            console.log('Username:', username);
+            console.log('Password:', password);
             // Store user info (can also store in session/local storage)
             localStorage.setItem('user', JSON.stringify(data.user));
-
-            // Redirect user based on role
-            if (data.user.role === 'admin') {
-                window.location.href = '/menu-admin-side'; // Student dashboard URL
-            } 
         } else {
             alert(data.msg);
         }

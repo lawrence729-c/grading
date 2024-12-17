@@ -35,7 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.msg === 'Login successful') {
                 window.localStorage.setItem('loggedInUser', JSON.stringify(data.user));
                 console.log('Login successful')
-            } else { 
+            }
+                /*if(data.role === 'student'){ 
+                    localStorage.setItem('loggedInUser', data.user.id);
+                    window.location.href = '/grades';
+                }*/
+                 else { 
                 alert('Invalid login, please try again');
             }
         })
@@ -55,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginContainer.style.display = 'block';
         logoutContainer.style.display = 'none';
     }*/
-    
+        
     function displayLogOutView(username){ 
         loginContainer.style.display = 'none';
         logoutContainer.style.display = 'block';

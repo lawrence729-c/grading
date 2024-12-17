@@ -9,7 +9,7 @@
         <header class="header">
             <h1>Grading</h1>
           </header>
-        <div class = "container" >
+        <div class = "container" style="display: none">
             <nav class="navbar"> 
                 <a href= "/home" class= "active">Home Page</a>
                 <br><br>
@@ -25,16 +25,64 @@
             </nav>  
         </div>
 
-        <div class="index-login"> 
+        <div id="index-login"> 
             <h2>Welcome! Login Here</h2>
             <div id="loginForm">
                 <input type="text" id="username" placeholder="Enter username" required><br>
                 <input type="password" id="password" placeholder="Enter password" required><br>
                 <button class="submit-login" id="login">Login</button>
+                <br><br>
+                <h4>Not Enrolled? Register Here!</h4> 
+                <a href="/register">Register</a>
             </div>
             </div>
         </div>
     
+        <div id="admin-container" style="display: none;">
+            <h3>Welcome Admin!</h3>
+            <p>Edit Page</p>
+                <nav class="navbar"> 
+                    <a href= "/home" class= "active">Home Page</a>
+                    <br><br>
+                    <a href= "/menu">Main Menu<span class="arrow">&#9662;</span></a>
+                    <br><br>
+                    <a href= "#modules">Modules/Assignments</a>            
+                    <br><br>
+                    <a href= "#mail">Mail</a>
+                    <br><br>
+                    <a href= "#grades">Grades</a>            
+        </div>
+    
+        <div id="student-container" style="display: none;">
+            <h3>Welcome Student!</h3>
+            <nav class="navbar"> 
+                <a href="/modules2">View Assignments</a>
+                <br><br>
+                <a href="/view-grades">View Your Grades</a>
+                <br><br>
+                <a href="/compose">Email</a>
+                <br><br>
+                <a href="/studentinbox">Your Mail</a>
+                <br><br>
+                <a href="/calculator">Calculate your own grade</a>
+                <br><br>
+                <button class="submit-logout" id="logout">Logout</button>
+            </nav>
+        </div>
+    
+        <div id="counselor-container" style="display: none;">
+            <h3>Welcome Counselor!</h3>
+            <nav class="navbar"> 
+                <a href="/counselorinbox">Your Mail</a>
+                <br><br>
+                <a href="/compose">Email</a>
+                <br><br>
+                <a href="/counselorview-grades">View Student Grades</a>
+                <br><br>
+                <button class="submit-logout" id="logout2">Logout</button>
+            </nav>
+        </div>
+
         <div class = "due-container">
             <h3>What's Due</h3>
             <div class= "due-list"> 
@@ -47,7 +95,7 @@
         </div>
 
         <img src = "https://as1.ftcdn.net/jpg/01/30/82/92/1000_F_130829283_kDFS1fSIH4qXm5cPsB6WEagrdB0BD1oo.jpg" alt = "grading-image" class= "center-right-image" >
-    
-        <script src="/client/js/login.js"></script>
-    </body>
+        
+        <script src="/client/js/rolebasedlogin.js"></script>
+        </body>
     </html>

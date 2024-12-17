@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <title>View Grades</title>  
+    <link rel="stylesheet" href="/client/css/styles.css" />
+</head>
+<body>
+    <header class="header">
+        <h1>Student Grades</h1>
+    </header>
+
+    <div class="view-grades-container">
+        <h3>Enter Your Name</h3>
+        <input type="text" id="studentname-id" placeholder="Enter student's ID/name" />
+        <button id="viewGradesButton">View Grades</button>
+
+        <h3>Grades for Student</h3>
+
+        <div id="student-grades-display"></div>
+    </div>
+
+    <script>
+        document.getElementById('viewGradesButton').addEventListener('click', () => {
+            const studentName = document.getElementById('studentname-id').value.trim();
+
+        // Retrieve student grades from localStorage
+        const allGrades = JSON.parse(localStorage.getItem('studentGrades'));
+
+        if (allGrades && allGrades[studentName]) {
+            // Display student's grades
+            const studentGrades = allGrades[studentName];
+            const gradesContainer = document.getElementById('student-grades-display');
+            gradesContainer.innerHTML = `
+                <h4>${studentName}</h4>
+                <ul>
+                    <li>Assignment 1: ${studentGrades.grades.assignment1}</li>
+                    <li>Assignment 2: ${studentGrades.grades.assignment2}</li>
+                    <li>Assignment 3: ${studentGrades.grades.assignment3}</li>
+                    <li>Assignment 4: ${studentGrades.grades.assignment4}</li>
+                    <li>Assignment 5: ${studentGrades.grades.assignment5}</li>
+                    <li>Assignment 6: ${studentGrades.grades.assignment6}</li>
+                </ul>
+                <p><strong>Average Grade: </strong>${studentGrades.avgGrade}</p>
+            `;
+        } else {
+            document.getElementById('student-grades-display').innerHTML = 'No grades found.';
+        }
+    });
+    </script>
+    
+    <script src="/client/js/grades.js"></script>
+</body>
+</html>

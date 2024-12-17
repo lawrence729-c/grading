@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: rgb(240, 126, 32);">
+<head>
+    <meta charset="UTF-8">
+    <title>Counselor Inbox</title>
+</head>
+<body>
+    <h1>Enter Your Counselor Name</h1>
+    <input type="text" id="counselorName" placeholder="Enter counselor name" required>
+    <button id="viewStudents">Submit</button>
+    
+    <h3>Inbox</h3>
+    <div id="counselorReport" style="margin-top: 20px;background-color: white; color: rgb(22, 22, 22)"></div>
+
+    <script>
+        document.getElementById('viewStudents').addEventListener('click', () => {
+            const counselorName = document.getElementById('counselorName').value.trim();
+            const studentsForCounselor = {
+                "Chad": ["Henry", "Jennifer", "Richard", "Daniel", "Mike", "Evelyn"],
+                "Christine": ["Jack", "Chris", "Benjamin", "Olivia", "William", "David"]
+            };
+
+            const performanceReports = {
+                "Henry": "Henry is doing a great job and continues to show consistency.",
+                "Jennifer": "Jennifer is doing well in this class and always gives her best effort.",
+                "Richard": "Richard is making steady progress in class.",
+                "Daniel": "Daniel is doing exceptionally well in this class.",
+                "Mike": "Mike is doing exceptionally well and is on track to passing this course.",
+                "Evelyn": "Excellent performance by Evelyn.",
+                "Jack": "Jack is doing a wonderful job.",
+                "Chris": "Chris continues to do amazing in this class.",
+                "Benjamin": "Excellent performance by Benjamin.",
+                "Olivia": "Olivia continues to do an awesome job.",
+                "William": "William needs to have a talk with his counselor as he is failing.",
+                "David": "David needs to contact with his counselor due to poor performance in this class."
+            };
+
+            if (studentsForCounselor[counselorName]) {
+                let reportHTML = `<h2>${counselorName}'s Students</h2>`;
+                studentsForCounselor[counselorName].forEach(student => {
+                    reportHTML += `<h3>${student}</h3><p>${performanceReports[student]}</p>`;
+                });
+                document.getElementById('counselorReport').innerHTML = reportHTML;
+            } else {
+                document.getElementById('counselorReport').innerText = "Counselor not found.";
+            }
+        });
+    </script>
+</body>
+</html>

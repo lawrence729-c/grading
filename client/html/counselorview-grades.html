@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <title>View Grades</title>  
+    <link rel="stylesheet" href="/client/css/styles.css" />
+</head>
+<body>
+    <header class="header">
+        <h1>Student Grades</h1>
+    </header>
+
+    <div class="view-grades-container">
+        <h3>Enter Your Name</h3>
+        <input type="text" id="counselor-name" placeholder="Enter counselor name" />
+        <button id="viewGradesButton">View Grades</button>
+        <h3>Grades for Counselor's Students</h3>
+        <div id="counselor-grades-display"></div>
+    </div>
+
+    <script>
+    document.getElementById('viewGradesButton').addEventListener('click', () => {
+        const counselorName = document.getElementById('counselor-name').value.trim();
+        
+        // Counselor to student mapping
+        const studentsForCounselor = {
+            "Chad": ["Henry", "Jennifer", "Richard", "Daniel", "Mike", "Evelyn"],
+            "Christine": ["Jack", "Chris", "Benjamin", "Olivia", "William", "David"]
+        };
+
+        // Retrieve all student grades from localStorage
+        const allGrades = JSON.parse(localStorage.getItem('studentGrades'));
+
+        if (studentsForCounselor[counselorName] && allGrades) {
+            let reportHTML = `<h2>${counselorName}'s Students' Grades</h2>`;
+            studentsForCounselor[counselorName].forEach(student => {
+                if (allGrades[student]) {
+                    const studentGrades = allGrades[student];
+                    reportHTML += `
+                        <h3>${student}</h3>
+                        <ul>
+                            <li>Assignment 1: ${studentGrades.grades.assignment1}</li>
+                            <li>Assignment 2: ${studentGrades.grades.assignment2}</li>
+                            <li>Assignment 3: ${studentGrades.grades.assignment3}</li>
+                            <li>Assignment 4: ${studentGrades.grades.assignment4}</li>
+                            <li>Assignment 5: ${studentGrades.grades.assignment5}</li>
+                            <li>Assignment 6: ${studentGrades.grades.assignment6}</li>
+                        </ul>
+                        <p><strong>Average Grade: </strong>${studentGrades.avgGrade}</p>
+                    `;
+                } else {
+                    reportHTML += `<h3>${student}</h3><p>Grades not available for this student.</p>`;
+                }
+            });
+            document.getElementById('counselor-grades-display').innerHTML = reportHTML;
+        } else {
+            document.getElementById('counselor-grades-display').innerText = "Counselor not found or no students available.";
+        }
+    });
+</script>
+
+<script src="/client/js/grades.js"></script>
+</body>
+</html>
