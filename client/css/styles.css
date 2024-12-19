@@ -239,12 +239,11 @@ input[type="text"]{
 }
 
 .grades-container .student-name {
-   margin-bottom: 30px; /* Adjust space between inputs and button */
+   margin-bottom: 30px; 
 }
 
-/* Add space after the Publish Grades button */
 .grades-container .student-name button {
-   margin-top: 20px;  /* Space between button and following elements */
+   margin-top: 20px; 
 }
 
 .assignment-box2{ 
@@ -357,12 +356,10 @@ input[type="text"]{
    font-size: 0.8rem;
 }
 
-/* Style for Starred Messages */
 .message-item.starred {
    background-color: #fff9c4;;
 }
 
-/* Style for Sent/Drafts */
 #sent-messages, #draft-messages {
    background-color: #f1f8e9;
 }

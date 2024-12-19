@@ -30,7 +30,6 @@ loginButton.addEventListener('click', function(event) {
         if (data.msg === 'Login successful') {
             console.log('Username:', username);
             console.log('Password:', password);
-            // Store user info (can also store in session/local storage)
             localStorage.setItem('user', JSON.stringify(data.user));
         } else {
             alert(data.msg);
@@ -53,7 +52,6 @@ loginButton.addEventListener('click', function(event) {
         return;
     }
 
-    // Make an API call based on the user type
     fetch('http://localhost:5000/student-login', { 
         method: 'POST',
         headers: {
@@ -69,7 +67,6 @@ loginButton.addEventListener('click', function(event) {
         if (data.msg === 'Login successful') {
             console.log('Username:', username);
             console.log('Password:', password);
-            // Store user info (can also store in session/local storage)
             localStorage.setItem('user', JSON.stringify(data.user));
         } else {
             alert(data.msg);
@@ -92,7 +89,6 @@ loginButton.addEventListener('click', function(event) {
         return;
     }
 
-    // Make an API call based on the user type
     fetch('http://localhost:5000/counselor-login', { 
         method: 'POST',
         headers: {
@@ -108,7 +104,6 @@ loginButton.addEventListener('click', function(event) {
         if (data.msg === 'Login successful') {
             console.log('Username:', username);
             console.log('Password:', password);
-            // Store user info (can also store in session/local storage)
             localStorage.setItem('user', JSON.stringify(data.user));
         } else {
             alert(data.msg);
@@ -121,7 +116,6 @@ loginButton.addEventListener('click', function(event) {
 });
 
 logoutButton.addEventListener('click', function(event) {
-    // Clear the stored user data and hide the logged-in content
     localStorage.removeItem('user');
     document.getElementById('admin-container').style.display = 'none';
     document.getElementById('student-container').style.display = 'none';
@@ -130,7 +124,6 @@ logoutButton.addEventListener('click', function(event) {
 });
 
 logoutButton2.addEventListener('click', function(event) {
-    // Clear the stored user data and hide the logged-in content
     localStorage.removeItem('user');
     document.getElementById('admin-container').style.display = 'none';
     document.getElementById('student-container').style.display = 'none';
@@ -143,12 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (user) {
 
-        // Hide all containers
         document.getElementById('admin-container').style.display = 'none';
         document.getElementById('student-container').style.display = 'none';
         document.getElementById('counselor-container').style.display = 'none';
         
-        // Show the appropriate container based on the role
         if (user.role === 'admin') {
             document.getElementById('admin-container').style.display = 'block';
         } else if (user.role === 'student') {

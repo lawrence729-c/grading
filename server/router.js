@@ -87,15 +87,15 @@ var router = function(app) {
 		});
 
 	app.get("/grades", function(req, res) { 
-		res.status(200).sendFile(path.join(__dirname + "/../client/html/grades.html"));
+		res.status(200).sendFile(path.join(__dirname + "/../client/html/grades/grades.html"));
 	});
 
 	app.get("/view-grades", function(req, res) { 
-		res.status(200).sendFile(path.join(__dirname + "/../client/html/view-grades.html"));
+		res.status(200).sendFile(path.join(__dirname + "/../client/html/grades/view-grades.html"));
 	});
 	
 	app.get("/counselorview-grades", function(req, res) { 
-		res.status(200).sendFile(path.join(__dirname + "/../client/html/counselorview-grades.html"));
+		res.status(200).sendFile(path.join(__dirname + "/../client/html/grades/counselorview-grades.html"));
 	});
 
 	app.get("/calculator", function(req, res) { 

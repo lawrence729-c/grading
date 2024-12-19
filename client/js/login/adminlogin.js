@@ -27,7 +27,6 @@ loginButton.addEventListener('click', function(event) {
         if (data.msg === 'Login successful') {
             console.log('Username:', username);
             console.log('Password:', password);
-            // Store user info (can also store in session/local storage)
             localStorage.setItem('user', JSON.stringify(data.user));
         } else {
             alert(data.msg);

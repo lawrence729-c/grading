@@ -32,64 +32,6 @@ fetch('http://localhost:5000/send-email', {
 });
 }
 
-function fetchMessages(type) {
-    fetch('http://localhost:5000/inbox')
-    .then(response => response.json())
-    .then(data => {
-        const messageContainer = document.getElementById('inbox-messages');
-        messageContainer.innerHTML = '';  // Clear previous messages
-
-        data.forEach(message => {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message-item');
-            messageElement.innerHTML = `
-                <span class="message-subject">${message.subject}</span>
-                <span class="message-date">${message.date}</span>
-            `;
-            messageContainer.appendChild(messageElement);
-        });
-    })
-    .catch(error => console.error('Error fetching messages:', error));
-}
-
-// Example usage: fetch inbox messages when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    fetchMessages('inbox');
-});
-
-/*function fetchMessageReports(type) {
-    fetch(`http://localhost:5000/${type}`) // Adjust with actual endpoint for inbox/starred/etc.
-        .then(response => response.json())
-        .then(data => {
-            const messageContainer = document.getElementById(`${type}-messages`);
-            messageContainer.innerHTML = ''; // Clear previous messages
-
-            data.forEach(message => {
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('message-item');
-
-                // Check if message subject matches "Performance Reports"
-                if (message.subject === "Performance Reports") {
-                    messageElement.innerHTML = `
-                        <span class="message-subject">${message.subject}</span>
-                        <span class="message-date">${message.date}</span>
-                        <div class="performance-report">
-                            <span>${message.text}</span>
-                        </div>
-                    `;
-                } else {
-                    messageElement.innerHTML = `
-                        <span class="message-subject">${message.subject}</span>
-                        <span class="message-date">${message.date}</span>
-                    `;
-                }
-
-                messageContainer.appendChild(messageElement);
-            });
-        })
-        .catch(error => console.error('Error fetching messages:', error));
-}*/
-
 function composeMessageReports(){
     const to = document.getElementById('message-to').value;
     const subject = document.getElementById('subject').value;

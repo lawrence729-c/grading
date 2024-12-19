@@ -12,7 +12,6 @@ loginButton.addEventListener('click', function(event) {
         return;
     }
 
-    // Make an API call based on the user type
     fetch('http://localhost:5000/student-login', { 
         method: 'POST',
         headers: {
@@ -28,13 +27,7 @@ loginButton.addEventListener('click', function(event) {
         if (data.msg === 'Login successful') {
             console.log('Username:', username);
             console.log('Password:', password);
-            // Store user info (can also store in session/local storage)
             localStorage.setItem('user', JSON.stringify(data.user));
-
-            // Redirect user based on role
-            if (data.user.role === 'admin') {
-                window.location.href = '/menu-admin-side'; // Admin dashboard URL
-            } 
         } else {
             alert(data.msg);
         }

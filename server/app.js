@@ -3,7 +3,6 @@ const cors = require('cors');
 const path = require("path");
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const multer = require('multer');
 
 const app = express();
 
@@ -25,8 +24,8 @@ var port = 5000;
 const transporter = nodemailer.createTransport({
     service: 'gmail', // For example, Gmail
     auth: {
-        user: 'your-email@gmail.com', // Replace with your email
-        pass: 'your-email-password'    // Replace with your email password
+        user: 'your-email@gmail.com', 
+        pass: 'your-email-password'  
     }
 });
 
@@ -37,43 +36,6 @@ router(app);
 //Service listeners 
 var services = require("./services.js"); 
 services(app);
-
-
-// Send email endpoint
-app.post('/send-email', (req, res) => {
-    const { to, subject, text } = req.body;
-    
-    // Email options
-    const mailOptions = {
-        from: 'your-email@gmail.com', // Sender address
-        to,                          // List of recipients
-        subject,                     // Subject line
-        text                         // Plain text body
-    };
-
-    // Send email
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log(error);
-            return res.status(500).json({ msg: 'Failed to send email' });
-        }
-        console.log('Email sent: ' + info.response);
-        res.status(200).json({ msg: 'Email sent successfully' });
-    });
-});
-
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'uploads/'); // Specify the upload folder
-    },
-    filename: function(req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname)); // Rename file to avoid conflicts
-    }
-});
-
-// Initialize multer with file storage settings
-const upload = multer({ storage: storage });
-
 
 /*Email verification
 function sendVerificationEmail(userEmail, verificationToken) {

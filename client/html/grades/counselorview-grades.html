@@ -22,13 +22,11 @@
     document.getElementById('viewGradesButton').addEventListener('click', () => {
         const counselorName = document.getElementById('counselor-name').value.trim();
         
-        // Counselor to student mapping
         const studentsForCounselor = {
             "Chad": ["Henry", "Jennifer", "Richard", "Daniel", "Mike", "Evelyn"],
             "Christine": ["Jack", "Chris", "Benjamin", "Olivia", "William", "David"]
         };
 
-        // Retrieve all student grades from localStorage
         const allGrades = JSON.parse(localStorage.getItem('studentGrades'));
 
         if (studentsForCounselor[counselorName] && allGrades) {

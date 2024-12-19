@@ -24,11 +24,9 @@
         document.getElementById('viewGradesButton').addEventListener('click', () => {
             const studentName = document.getElementById('studentname-id').value.trim();
 
-        // Retrieve student grades from localStorage
         const allGrades = JSON.parse(localStorage.getItem('studentGrades'));
 
         if (allGrades && allGrades[studentName]) {
-            // Display student's grades
             const studentGrades = allGrades[studentName];
             const gradesContainer = document.getElementById('student-grades-display');
             gradesContainer.innerHTML = `
